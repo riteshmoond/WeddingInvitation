@@ -1,10 +1,7 @@
 // Couple.jsx
 import { motion } from "framer-motion";
-
-const BRIDE_IMAGE =
-  "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800&auto=format&fit=crop";
-const GROOM_IMAGE =
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop";
+import BRIDE_IMAGE from "../assets/bride.jpg";
+import GROOM_IMAGE from "../assets/groom.jpg";
 
 const Couple = () => {
   return (

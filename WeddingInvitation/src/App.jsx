@@ -13,6 +13,7 @@ import OpenCard from "./components/OpenCard";
 import RSVP from "./components/RSVP";
 import Venue from "./components/Venue";
 import Countdown from "./components/Countdown";
+import Family from "./components/Family";
 
 function App() {
   const [musicStart, setMusicStart] = useState(false);
@@ -64,6 +65,7 @@ function App() {
       <Events />
       <Venue />
       <Countdown />
+      <Family/>
       <RSVP />
       <Footer />
     </>

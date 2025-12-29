@@ -43,7 +43,7 @@ const Venue = () => {
 
           {/* Venue Name */}
           <h3 className="text-3xl font-serif text-white mb-4">
-            Basera Haveli Rajasthan
+            Basera Haveli Palsana
           </h3>
 
           {/* Address */}
