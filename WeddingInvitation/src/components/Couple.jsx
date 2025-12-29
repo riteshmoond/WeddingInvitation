@@ -42,7 +42,7 @@ const Couple = () => {
 
           {/* Name */}
           <h3 className="mt-12 text-3xl font-serif text-[#F5E6C8] tracking-wide">
-            Bride Name
+            Neelam Bijarnia
           </h3>
 
           {/* Divider */}
@@ -50,7 +50,7 @@ const Couple = () => {
 
           {/* Family */}
           <p className="text-sm text-gray-400 tracking-widest uppercase ">
-            Daughter of Mr.Shreeram Bijarniya & Mrs. Kamla Devi
+            Daughter of Mr.Shriram B Bijarnia & Mrs. Kamla S Bijarnia
           </p>
         </motion.div>
 
@@ -66,12 +66,18 @@ const Couple = () => {
           <div className="relative w-72 h-[28rem] mx-auto">
             <div className="absolute inset-0 rounded-3xl border border-[#C8A951]/70" />
 
-            <img
-              src={GROOM_IMAGE}
-              alt="Groom"
-              className="relative z-10 w-full h-full object-cover rounded-3xl scale-95
-              transition-transform duration-700 group-hover:scale-100"
-            />
+           <img
+  src={GROOM_IMAGE}
+  alt="Groom"
+  className="relative z-10 w-full h-full
+  object-cover
+  object-[70%_40%] md:object-[65%_35%]
+  rounded-3xl scale-95
+  transition-transform duration-700 group-hover:scale-100"
+/>
+
+
+
 
             <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100
               bg-[radial-gradient(circle_at_center,rgba(200,169,81,0.25),transparent_70%)]
@@ -81,7 +87,7 @@ const Couple = () => {
 
           {/* Name */}
           <h3 className="mt-12 text-3xl font-serif text-[#F5E6C8] tracking-wide">
-            Groom Name
+            Gordhan Bajiya
           </h3>
 
           {/* Divider */}
@@ -89,7 +95,7 @@ const Couple = () => {
 
           {/* Family */}
           <p className="text-sm text-gray-400 tracking-widest uppercase">
-            Son of Mr. & Mrs. …
+            Son of Mr.Balu Ram Bajiya & Mrs. Shokuri Devi Bajiya
           </p>
         </motion.div>
       </div>

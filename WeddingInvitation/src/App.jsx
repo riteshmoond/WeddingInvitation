@@ -14,6 +14,7 @@ import RSVP from "./components/RSVP";
 import Venue from "./components/Venue";
 import Countdown from "./components/Countdown";
 import Family from "./components/Family";
+import FamilyWelcome from "./components/FamilyWelcome";
 
 function App() {
   const [musicStart, setMusicStart] = useState(false);
@@ -62,10 +63,11 @@ function App() {
       <Hero />
       <Fireworks />
       <Couple />
+      <FamilyWelcome/>
+      <Family/>
       <Events />
       <Venue />
       <Countdown />
-      <Family/>
       <RSVP />
       <Footer />
     </>
