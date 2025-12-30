@@ -1,6 +1,6 @@
 // MusicToggle.jsx
 import { useEffect, useRef, useState } from "react";
-import Music from '../assets/Music.mp3'
+import Music from "../assets/music.mp3";
 
 const MusicToggle = ({ start }) => {
   const audioRef = useRef(null);
