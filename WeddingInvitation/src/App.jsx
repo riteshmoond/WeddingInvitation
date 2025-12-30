@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 
 import CinematicIntro from "./components/CinematicIntro";
-import Couple from "./components/Couple";
+// import Couple from "./components/Couple";
 import EntryGate from "./components/EntryGate";
 // import Events from "./components/Events";
 import Fireworks from "./components/Fireworks";
@@ -64,14 +64,14 @@ function App() {
 
       <Hero />
       <Fireworks />
-      <Couple />
+      {/* <Couple /> */}
       {/* <TheirStory/> */}
-      <EngagementSlider/>
       <Family/>
-      <FamilyWelcome/>
+      <EngagementSlider/>
       {/* <Events /> */}
       <Venue />
       <Countdown />
+      <FamilyWelcome/>
       <RSVP />
       <Footer />
     </>
