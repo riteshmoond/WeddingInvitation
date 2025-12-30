@@ -48,11 +48,11 @@ const Parents = () => {
           </p>
 
           <h3 className="text-3xl font-serif text-[#F5E6C8] mb-2">
-            Mr. Rajesh Sharma
+            Mr. Shriram B Bijarnia
           </h3>
 
           <h4 className="text-2xl font-serif text-[#F5E6C8]/90">
-            Mrs. Sunita Sharma
+            Mrs. Kamla S Bijarnia
           </h4>
         </motion.div>
 
@@ -70,11 +70,11 @@ const Parents = () => {
           </p>
 
           <h3 className="text-3xl font-serif text-[#F5E6C8] mb-2">
-            Mr. Mahesh Verma
+            Mr. Balu Ram Bajiya
           </h3>
 
           <h4 className="text-2xl font-serif text-[#F5E6C8]/90">
-            Mrs. Kavita Verma
+            Mrs. Shokuri Devi Bajiya
           </h4>
         </motion.div>
       </div>

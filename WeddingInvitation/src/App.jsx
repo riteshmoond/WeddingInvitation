@@ -4,7 +4,7 @@ import "./App.css";
 import CinematicIntro from "./components/CinematicIntro";
 import Couple from "./components/Couple";
 import EntryGate from "./components/EntryGate";
-import Events from "./components/Events";
+// import Events from "./components/Events";
 import Fireworks from "./components/Fireworks";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -15,6 +15,8 @@ import Venue from "./components/Venue";
 import Countdown from "./components/Countdown";
 import Family from "./components/Family";
 import FamilyWelcome from "./components/FamilyWelcome";
+// import TheirStory from "./components/TheirStory";
+import EngagementSlider from "./components/EngagementSlider";
 
 function App() {
   const [musicStart, setMusicStart] = useState(false);
@@ -63,9 +65,11 @@ function App() {
       <Hero />
       <Fireworks />
       <Couple />
-      <FamilyWelcome/>
+      {/* <TheirStory/> */}
+      <EngagementSlider/>
       <Family/>
-      <Events />
+      <FamilyWelcome/>
+      {/* <Events /> */}
       <Venue />
       <Countdown />
       <RSVP />

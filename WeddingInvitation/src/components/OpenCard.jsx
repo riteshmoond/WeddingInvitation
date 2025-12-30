@@ -32,18 +32,18 @@ const OpenCard = ({ name, onOpen }) => {
         {/* Couple Names */}
         <div className="my-6">
           <h3 className="text-3xl font-serif text-white">
-            Bride Name
+            Neelam Bijarnia
           </h3>
           <p className="text-[#C8A951] my-2">&</p>
           <h3 className="text-3xl font-serif text-white">
-            Groom Name
+            Gordhan Bajiya
           </h3>
         </div>
 
         {/* Wedding Details */}
         <div className="text-gray-400 text-sm leading-relaxed mb-8">
           <p>23 January 2026 </p>
-          <p className="mt-1">Basera Haveli, Palsana Bypass. Sikar, Rajasthan</p>
+          <p className="mt-1">BASERA HAWELI, BASERA CHOWK, NH-52, Palsana, Sikar (Rajasthan)</p>
         </div>
 
         {/* Divider */}
