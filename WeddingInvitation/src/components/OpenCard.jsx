@@ -330,9 +330,16 @@ const OpenCard = ({ name, onOpen }) => {
       </div>
 
       {/* 🔒 HIDDEN COMPONENT (ONLY FOR PDF) */}
-      <div className="absolute -z-50 opacity-0 pointer-events-none">
-        <WeddingInvitation ref={invitationRef} name={name} />
-      </div>
+     <div
+  style={{
+    position: "fixed",
+    top: "-10000px",
+    left: "-10000px",
+  }}
+>
+  <WeddingInvitation ref={invitationRef} name={name} />
+</div>
+
     </>
   );
 };
