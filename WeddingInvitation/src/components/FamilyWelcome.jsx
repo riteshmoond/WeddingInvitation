@@ -27,7 +27,8 @@ const FamilyWelcome = () => {
           <h2 className="text-lg sm:text-xl md:text-2xl font-serif text-gray-100 leading-relaxed mb-6">
             Yogita – Rakesh, Paras – Manveer, <br />
             Pooja – Kiran, Gagan <br />
-            and our little <span className="text-[#F7E7C6] font-semibold">
+            and our little{" "}
+            <span className="text-[#F7E7C6] font-semibold">
               Dhairyaveer
             </span>
           </h2>
@@ -36,8 +37,26 @@ const FamilyWelcome = () => {
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#C8A951] to-transparent mx-auto my-6" />
 
           {/* Welcome Line */}
-          <p className="text-sm sm:text-base italic text-[#E0B973]">
+          <p className="text-sm sm:text-base italic text-[#E0B973] mb-6">
             Welcome you to the celebration of love and friendship.
+          </p>
+
+          {/* ✨ NEW: Formal Invitation Text */}
+          <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">
+            With immense joy and heartfelt happiness, we invite you and your
+            family to grace this auspicious occasion and share in the warmth,
+            laughter, and togetherness as two souls begin a beautiful journey.
+          </p>
+
+          {/* ✨ NEW: Event Note */}
+          <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-6">
+            Your presence will add charm to the celebrations and make the
+            moments truly memorable for us all.
+          </p>
+
+          {/* ✨ NEW: Gentle Reminder / Note */}
+          <p className="text-xs sm:text-sm text-gray-500 italic">
+            We humbly request your blessings and good wishes on this joyous day.
           </p>
 
           {/* Footer Blessing */}

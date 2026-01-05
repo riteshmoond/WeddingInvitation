@@ -5,7 +5,7 @@ import { CheckCircle, Phone } from "lucide-react";
 const RSVP = () => {
   const handleWhatsApp = () => {
   const phoneNumber = "919257479576"; // 👈 apna WhatsApp number
-  const message = "I am coming in wedding 💍🎉";
+  const message = "Hello, I would like to confirm my attendance for the wedding invitation. Looking forward to celebrating the special day! Thank you. "; // 👈 default message
 
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message
@@ -38,8 +38,11 @@ const RSVP = () => {
 
         {/* Message */}
         <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-14">
-          We would be honoured by your presence on this joyous occasion<br />
-          and kindly request a confirmation of your attendance.
+          Your presence at our wedding means the world to us. Please let us
+          know if you will be able to join in our celebration by clicking the
+          button below. We look forward to sharing this special day with you! <br/>
+          Kindly RSVP by January 23, 2026 <br/> Thank you!
+
         </p>
 
         {/* RSVP Card */}
@@ -71,8 +74,8 @@ const RSVP = () => {
         </motion.div>
 
         {/* Closing line */}
-        <p className="text-xs text-gray-500 mt-16">
-          We look forward to celebrating together
+        <p className="text-xl text-gray-500 mt-16">
+          Kindly consider this as a personal invitation 
         </p>
       </motion.div>
     </section>
