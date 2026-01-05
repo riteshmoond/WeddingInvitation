@@ -17,6 +17,7 @@ import Family from "./components/Family";
 import FamilyWelcome from "./components/FamilyWelcome";
 // import TheirStory from "./components/TheirStory";
 import EngagementSlider from "./components/EngagementSlider";
+import WeddingInvitation from "./components/WeddingInvitation";
 
 function App() {
   const [musicStart, setMusicStart] = useState(false);
@@ -74,6 +75,7 @@ function App() {
       <FamilyWelcome/>
       <RSVP />
       <Footer />
+      <WeddingInvitation/>
     </>
   );
 }
