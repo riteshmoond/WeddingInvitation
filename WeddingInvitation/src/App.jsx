@@ -75,7 +75,7 @@ function App() {
       <FamilyWelcome/>
       <RSVP />
       <Footer />
-      <WeddingInvitation/>
+      {/* <WeddingInvitation/> */}
     </>
   );
 }
