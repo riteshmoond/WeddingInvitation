@@ -863,7 +863,7 @@ const WeddingInvitation = forwardRef(({ name }, ref) => {
       <div style={{ fontSize: '14px', lineHeight: '1.6', color: '#333' }}>
         <p style={{ fontWeight: 'bold', fontSize: '16px', color: '#7a1f1f', marginBottom: '5px' }}>प्रेषक :</p>
         <p style={{ fontWeight: '600', fontSize: '19px', color: '#7a1f1f', margin: '0' }}>श्रीराम बिजारणियाँ</p>
-        <p style={{ margin: '2px 0' }}>(CIVIL CONT.) पनवेल, महाराष्ट्र | बसेरा हवेली, पलसाना (सीकर)</p>
+        <p style={{ margin: '2px 0' }}>(CIVIL CONT.) पनवेल, महाराष्ट्र बसेरा चौक, बसेरा हवेली, NH 52 बाईपास रोड़, पलसाना जिला : सीकर (राज.)</p>
         <p style={{ fontWeight: 'bold', color: '#7a1f1f', marginTop: '8px' }}>
           मो. : 9323590826, 9414447765, 9672157201, 7666947711
         </p>
@@ -1029,8 +1029,8 @@ const WeddingInvitation = forwardRef(({ name }, ref) => {
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', fontSize: '13px', gap: '12px 30px', color: '#444' }}>
           <p>• सजना – श्री मूलचन्दजी मावलिया</p><p>• गोकुल – श्री राजेन्द्रजी मावलिया</p>
-          <p>• श्रवणी – श्री श्योकरणजी बेनीवाल</p><p>• योगिता (Arch.) – राकेशजी आगज</p>
-          <p>• पारस (MBA) – मनवीरजी गौरा</p><p>• पूजा (MBA) – किरनजी जाधव</p>
+          <p>• श्रवणी – श्री श्योकरणजी बेनीवाल</p><p>• योगिता (Arch.) – राकेशजी आगज(Arch.)</p>
+          <p>• पारस (MBA)(Finance)– मनवीरजी गौरा Engineer (M.S.)</p><p>• पूजा (MBA, राष्ट्रीय राइफल शूटर) – किरनजी जाधव(Indian Navy, अन्तरराष्ट्रीय राइफल शूटर)</p>
           <p>• मनोज – मुकेशजी, सुमन – कजोड़जी</p><p>• सरोज – कन्हैयालालजी फरडोलिया</p>
           <p>• अंकिता – धनजयजी (Air Force)</p><p>• भारती – श्री अजीतसिंहजी</p>
         </div>
@@ -1040,6 +1040,7 @@ const WeddingInvitation = forwardRef(({ name }, ref) => {
       <div style={{ textAlign: 'center', padding: '20px' }}>
         <p style={{ fontSize: '15px', color: '#7a1f1f', fontWeight: '600', marginBottom: '15px' }}>
            <span style={{ color: '#c9a24d' }}>✿</span> विशेष आग्रह : रामकुमार, विक्रम, रणजीत, गगन <span style={{ color: '#c9a24d' }}>✿</span>
+           <span style={{ color: '#c9a24d' }}>✿</span> स्वागतकर्ता :- बनवारी, सुभाष, प्रकाश, महेश<span style={{ color: '#c9a24d' }}>✿</span>
         </p>
         
         <div style={{ marginTop: '20px' }}>
@@ -1057,7 +1058,7 @@ const WeddingInvitation = forwardRef(({ name }, ref) => {
       borderRadius: '15px', textAlign: 'center', border: '2px solid #c9a24d' 
     }}>
       <p style={{ fontSize: '15px', fontWeight: 'bold', color: '#fffaf3', margin: '0', letterSpacing: '0.5px' }}>
-        नोट: बारात दिनांक 23 जनवरी, 2026 शुक्रवार को सायं 05.15 बजे सुदरासन (डीडवाना) से बसेरा हवेली, पलसाना आयेगी।
+        नोट: बारात दिनांक 23 जनवरी, 2026 शुक्रवार को सायं 05.15 बजे सुदरासन (डीडवाना) से बसेरा चौक, बसेरा हवेली, एन.एच. 52, बाईपास रोड़, पलसाना आयेगी।
       </p>
     </div>
 
@@ -1141,9 +1142,9 @@ const WeddingInvitation = forwardRef(({ name }, ref) => {
           <p style={{ fontWeight: 'bold', color: '#7a1f1f', fontSize: '14px', marginBottom: '8px', borderBottom: '1px solid #fff5e6' }}>प्रतिष्ठान :</p>
           <div style={{ fontSize: '11px', lineHeight: '1.5', color: '#333' }}>
             <p style={{ margin: '0' }}><b>• बिजारणियाँ कंस्ट्रक्शन</b></p>
-            <p style={{ margin: '0' }}>• बसेरा कंस्ट्रक्शन एण्ड डिजाईनिंग (पनवेल)</p>
-            <p style={{ margin: '0' }}>• मो. : 9323590826, 9672157201</p>
-            <p style={{ margin: '0' }}>• राधे रेस्टोरेन्ट, NH 52, बाईपास रोड़, पलसाना</p>
+            <p style={{ margin: '0' }}>• बसेरा कंस्ट्रक्शन एण्ड डिजाईनिंग पनवेल (रायगढ़) महाराष्ट्र मो. : 9323590826</p>
+            {/* <p style={{ margin: '0' }}>• मो. : 9323590826, 9672157201</p> */}
+            <p style={{ margin: '0' }}>• राधे रेस्टोरेन्ट, NH 52, बाईपास रोड़, पलसाना मो. : 9672157201</p>
           </div>
         </div>
 
@@ -1151,8 +1152,7 @@ const WeddingInvitation = forwardRef(({ name }, ref) => {
           <p style={{ fontWeight: 'bold', color: '#7a1f1f', fontSize: '14px', marginBottom: '8px', borderBottom: '1px solid #fff5e6' }}>उत्तराकांक्षी :</p>
           <p style={{ fontSize: '11px', lineHeight: '1.5', color: '#333' }}>
             चौधरी रामेश्वरलाल, रामलाल, गुलाबचन्द बिजारणियाँ<br />
-            बसेरा हवेली, NH 52, पलसाना (सीकर)<br />
-            मो. : 9414447765, 7666947711
+            बसेरा चौक, बसेरा हवेली, NH 52 बाईपास रोड़, पलसाना <br/> जिला : सीकर (राज.) मो. : 9414447765, 7666947711
           </p>
         </div>
       </div>
