@@ -19,63 +19,51 @@ function App() {
   const [name, setName] = useState("");
   const [step, setStep] = useState(1);
   const [showIntro, setShowIntro] = useState(false);
-  const musicRef = useRef(null);
 
-  // 1️⃣ Entry
-  if (step === 1) {
-    return (
-      <>
-        <MusicToggle ref={musicRef} start={musicStart} />
+  return (
+    <>
+      {/* Isko hamesha bahar rakho taaki ye reset na ho step badalne par */}
+      <MusicToggle start={musicStart} />
+
+      {step === 1 && (
         <EntryGate
           onSubmit={(n) => {
             setName(n);
             setStep(2);
           }}
         />
-      </>
-    );
-  }
+      )}
 
-  // 2️⃣ Open Card
-  if (step === 2) {
-    return (
-      <>
-        {/* <MusicToggle ref={musicRef} start={musicStart} /> */}
+      {step === 2 && (
         <OpenCard
           name={name}
           onOpen={() => {
-            // ✅ iOS SAFE: audio already mounted
-            // musicRef.current?.play();
+            setMusicStart(true); // Yahan click hote hi music chal jayega
             setShowIntro(true);
-            setMusicStart(true);
             setStep(3);
           }}
         />
-      </>
-    );
-  }
-
-  // 3️⃣ Main Invitation
-  return (
-    <>
-      <MusicToggle  start={musicStart} />
-
-      {showIntro && (
-        <CinematicIntro
-          name={name}
-          onFinish={() => setShowIntro(false)}
-        />
       )}
 
-      <Hero />
-      <Fireworks />
-      <Family />
-      <EngagementSlider />
-      <Venue />
-      <Countdown />
-      <FamilyWelcome />
-      <RSVP />
-      <Footer />
+      {step === 3 && (
+        <>
+          {showIntro && (
+            <CinematicIntro
+              name={name}
+              onFinish={() => setShowIntro(false)}
+            />
+          )}
+          <Hero />
+          <Fireworks />
+          <Family />
+          <EngagementSlider />
+          <Venue />
+          <Countdown />
+          <FamilyWelcome />
+          <RSVP />
+          <Footer />
+        </>
+      )}
     </>
   );
 }
