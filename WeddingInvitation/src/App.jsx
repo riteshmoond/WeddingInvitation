@@ -19,11 +19,12 @@ function App() {
   const [name, setName] = useState("");
   const [step, setStep] = useState(1);
   const [showIntro, setShowIntro] = useState(false);
+  const musicRef = useRef(null);
 
   return (
     <>
       {/* Isko hamesha bahar rakho taaki ye reset na ho step badalne par */}
-      <MusicToggle start={musicStart} />
+      <MusicToggle ref={musicRef} start={musicStart} />
 
       {step === 1 && (
         <EntryGate
@@ -38,6 +39,10 @@ function App() {
         <OpenCard
           name={name}
           onOpen={() => {
+            // 🔥 iPhone Fix: Play music directly on user click
+            if (musicRef.current) {
+              musicRef.current.play();
+            }
             setMusicStart(true); // Yahan click hote hi music chal jayega
             setShowIntro(true);
             setStep(3);
