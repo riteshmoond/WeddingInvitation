@@ -47,22 +47,27 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import Music from "../assets/Music.mp3";
 
-const MusicToggle = forwardRef((props, ref) => {
+const MusicToggle = forwardRef(({ start }, ref) => {
   const audioRef = useRef(null);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   useImperativeHandle(ref, () => ({
     play() {
       if (!audioRef.current) return;
+
       audioRef.current.volume = 0.6;
-      audioRef.current.play();
+      audioRef.current.muted = true; // ✅ iOS trick
+      audioRef.current.play().then(() => {
+        audioRef.current.muted = false;
+        setMuted(false);
+      });
     },
   }));
 
   const toggleMute = () => {
     if (!audioRef.current) return;
-    audioRef.current.muted = !muted;
-    setMuted(!muted);
+    audioRef.current.muted = !audioRef.current.muted;
+    setMuted(audioRef.current.muted);
   };
 
   return (
@@ -71,16 +76,20 @@ const MusicToggle = forwardRef((props, ref) => {
         ref={audioRef}
         src={Music}
         loop
+        preload="auto"
         playsInline
       />
 
-      <button
-        onClick={toggleMute}
-        className="fixed bottom-6 right-6 z-50 bg-black/70 backdrop-blur border border-[#C8A951]
-        text-[#C8A951] px-4 py-2 rounded-full text-xs tracking-widest uppercase"
-      >
-        {muted ? "Unmute 🔊" : "Mute 🔇"}
-      </button>
+      {start && (
+        <button
+          onClick={toggleMute}
+          className="fixed bottom-6 right-6 z-50 bg-black/70 backdrop-blur
+          border border-[#C8A951] text-[#C8A951]
+          px-4 py-2 rounded-full text-xs tracking-widest uppercase"
+        >
+          {muted ? "Unmute 🔊" : "Mute 🔇"}
+        </button>
+      )}
     </>
   );
 });
