@@ -40,14 +40,14 @@ function App() {
   if (step === 2) {
     return (
       <>
-        <MusicToggle ref={musicRef} start={musicStart} />
+        {/* <MusicToggle ref={musicRef} start={musicStart} /> */}
         <OpenCard
           name={name}
           onOpen={() => {
             // ✅ iOS SAFE: audio already mounted
-            musicRef.current?.play();
-            setMusicStart(true);
+            // musicRef.current?.play();
             setShowIntro(true);
+            setMusicStart(true);
             setStep(3);
           }}
         />
@@ -58,7 +58,7 @@ function App() {
   // 3️⃣ Main Invitation
   return (
     <>
-      <MusicToggle ref={musicRef} start={musicStart} />
+      <MusicToggle  start={musicStart} />
 
       {showIntro && (
         <CinematicIntro
