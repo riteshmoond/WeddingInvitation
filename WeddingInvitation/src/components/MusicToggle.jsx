@@ -48,41 +48,39 @@ import Music from "../assets/Music.mp3";
 
 const MusicToggle = ({ start }) => {
   const audioRef = useRef(null);
-  const [muted, setMuted] = useState(true);   // 👈 start muted (iOS rule)
+  const [muted, setMuted] = useState(true); // 👈 iOS requires muted autoplay
   const [played, setPlayed] = useState(false);
 
   const playAudio = () => {
     if (!audioRef.current || played) return;
 
     audioRef.current.volume = 0.6;
-    audioRef.current.muted = true; // 👈 required for iOS autoplay
+    audioRef.current.muted = true; // 👈 iOS rule
     audioRef.current
       .play()
       .then(() => setPlayed(true))
       .catch(() => {});
   };
 
+  // 🔥 Start music automatically + iOS fallback
   useEffect(() => {
-    if (!start || played) return;
+    if (!start) return;
 
-    // try autoplay
-    playAudio();
+    playAudio(); // try autoplay
 
-    // iOS fallback: first user interaction
-    const unlockAudio = () => {
+    // iOS Safari fallback → first user interaction
+    const unlock = () => {
       playAudio();
-      window.removeEventListener("click", unlockAudio);
-      window.removeEventListener("touchstart", unlockAudio);
     };
 
-    window.addEventListener("click", unlockAudio, { once: true });
-    window.addEventListener("touchstart", unlockAudio, { once: true });
+    window.addEventListener("click", unlock, { once: true });
+    window.addEventListener("touchstart", unlock, { once: true });
 
     return () => {
-      window.removeEventListener("click", unlockAudio);
-      window.removeEventListener("touchstart", unlockAudio);
+      window.removeEventListener("click", unlock);
+      window.removeEventListener("touchstart", unlock);
     };
-  }, [start, played]);
+  }, [start]);
 
   const toggleMute = () => {
     if (!audioRef.current) return;
@@ -96,17 +94,16 @@ const MusicToggle = ({ start }) => {
     <>
       <audio
         ref={audioRef}
-        src={Music}
         loop
+        src={Music}
         muted={muted}
-        playsInline   // 👈 iOS REQUIRED
+        playsInline   // 👈 MUST for iOS
       />
 
       <button
         onClick={toggleMute}
         className="fixed bottom-6 right-6 z-50 bg-black/70 backdrop-blur border border-[#C8A951]
-        text-[#C8A951] px-4 py-2 rounded-full text-xs tracking-widest uppercase hover:bg-[#C8A951]
-        hover:text-black transition-all duration-300"
+        text-[#C8A951] px-4 py-2 rounded-full text-xs tracking-widest uppercase"
       >
         {muted ? "Unmute 🔊" : "Mute 🔇"}
       </button>
