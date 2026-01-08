@@ -54,6 +54,7 @@ function App() {
   // 3️⃣ Main Invitation
   return (
     <>
+    <MusicToggle start={musicStart} />
       {showIntro && (
         <CinematicIntro
           name={name}
@@ -61,7 +62,6 @@ function App() {
         />
       )}
 
-      <MusicToggle start={musicStart} />
 
       <Hero />
       <Fireworks />
