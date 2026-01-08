@@ -48,40 +48,57 @@ const MusicToggle = ({ start }) => {
   const [muted, setMuted] = useState(false);
   const [played, setPlayed] = useState(false);
 
-  // User first tap / click pe music play
-  const playAudio = () => {
-    if (audioRef.current && !played) {
-      audioRef.current.volume = 0.6; // initial volume
-      audioRef.current.play().catch(() => {});
-      setPlayed(true);
+  // Sabse important function: iOS ke liye direct interaction
+  const handleStartMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.6;
+      audioRef.current.play()
+        .then(() => {
+          setPlayed(true);
+        })
+        .catch((err) => {
+          console.log("Playback failed:", err);
+        });
     }
   };
 
   useEffect(() => {
     if (start && !played) {
-      // Desktop + mobile tap listener
-      window.addEventListener("click", playAudio, { once: true });
-      window.addEventListener("touchstart", playAudio, { once: true });
+      // iOS/Safari compatibility ke liye dono listeners
+      window.addEventListener("click", handleStartMusic, { once: true });
+      window.addEventListener("touchstart", handleStartMusic, { once: true });
     }
 
     return () => {
-      window.removeEventListener("click", playAudio);
-      window.removeEventListener("touchstart", playAudio);
+      window.removeEventListener("click", handleStartMusic);
+      window.removeEventListener("touchstart", handleStartMusic);
     };
   }, [start, played]);
 
-  const toggleMute = () => {
+  const toggleMute = (e) => {
+    e.stopPropagation(); // Click event ko window tak jane se rokne ke liye
     if (!audioRef.current) return;
+    
+    // Agar music abhi tak play nahi hua (iOS restriction), to toggle button par click karne se hi play kar do
+    if (!played) {
+      handleStartMusic();
+    }
+    
     audioRef.current.muted = !muted;
     setMuted(!muted);
   };
 
   return (
     <>
-      {/* Audio */}
-      <audio ref={audioRef} loop src={Music} />
+      {/* playsInline aur preload="auto" iOS ke liye zaroori hain */}
+      <audio 
+        ref={audioRef} 
+        loop 
+        src={Music} 
+        playsInline 
+        preload="auto"
+      />
 
-      {/* Mute/Unmute Button */}
       <button
         onClick={toggleMute}
         className="fixed bottom-6 right-6 z-50 bg-black/70 backdrop-blur border border-[#C8A951]
@@ -90,10 +107,12 @@ const MusicToggle = ({ start }) => {
         {muted ? "Unmute 🔊" : "Mute 🔇"}
       </button>
 
-      {/* Tap anywhere hint */}
       {!played && (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 text-sm sm:text-base text-yellow-400 font-semibold
-          bg-black/50 px-4 py-2 rounded-lg animate-pulse">
+        <div 
+          onClick={handleStartMusic} // Direct click handler on the hint
+          className="fixed top-6 left-1/2 -translate-x-1/2 z-50 text-sm sm:text-base text-yellow-400 font-semibold
+          bg-black/50 px-4 py-2 rounded-lg animate-pulse cursor-pointer"
+        >
           Tap anywhere to start music 🎵
         </div>
       )}
