@@ -111,6 +111,34 @@ const MusicToggle = forwardRef(({ start }, ref) => {
   const audioRef = useRef(null);
   const [muted, setMuted] = useState(false);
 
+  // 🔥 iOS Fix: Global Unlock Listener
+  // Ye listener user ke PEHLE touch par (Step 1 me hi) audio ko unlock kar dega
+  useEffect(() => {
+    const unlockAudio = () => {
+      if (audioRef.current) {
+        // Play silent/empty sound to unlock audio engine
+        audioRef.current.play().then(() => {
+          audioRef.current.pause();
+          audioRef.current.currentTime = 0;
+        }).catch((e) => console.log("Auto-unlock failed (harmless):", e));
+      }
+      // Ek baar unlock ho gaya to listeners hata do
+      ['click', 'touchstart', 'keydown'].forEach(event => 
+        document.removeEventListener(event, unlockAudio)
+      );
+    };
+
+    ['click', 'touchstart', 'keydown'].forEach(event => 
+      document.addEventListener(event, unlockAudio)
+    );
+
+    return () => {
+      ['click', 'touchstart', 'keydown'].forEach(event => 
+        document.removeEventListener(event, unlockAudio)
+      );
+    };
+  }, []);
+
   // 🔥 Expose play method to parent (App.jsx)
   useImperativeHandle(ref, () => ({
     play: () => {
