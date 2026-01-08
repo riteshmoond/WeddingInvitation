@@ -45,34 +45,37 @@ import Music from "../assets/Music.mp3";
 
 const MusicToggle = ({ start }) => {
   const audioRef = useRef(null);
-  const [muted, setMuted] = useState(true); // Default muted true rakhein safety ke liye
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [muted, setMuted] = useState(false);
 
-  // Jab parent se 'start' true ho, tab hum audio load karwa sakte hain
   useEffect(() => {
-    if (start && audioRef.current) {
-      audioRef.current.load(); 
+    const playAudio = () => {
+      if (audioRef.current) {
+        audioRef.current.volume = 0.6;
+        // play() call user ke touch par hona zaroori hai iPhone ke liye
+        audioRef.current.play().catch((err) => console.log("Autoplay blocked"));
+        
+        // Ek baar chal gaya toh listeners hata do
+        window.removeEventListener("click", playAudio);
+        window.removeEventListener("touchstart", playAudio);
+      }
+    };
+
+    if (start) {
+      // User screen pe kahin bhi click ya touch karega, music shuru ho jayega
+      window.addEventListener("click", playAudio);
+      window.addEventListener("touchstart", playAudio);
     }
+
+    return () => {
+      window.removeEventListener("click", playAudio);
+      window.removeEventListener("touchstart", playAudio);
+    };
   }, [start]);
 
-  const toggleMusic = () => {
-    if (!audioRef.current) return;
-
-    if (!isPlaying) {
-      // Pehli baar play karne ke liye (iOS requirement: Direct click handler)
-      audioRef.current.volume = 0.6;
-      audioRef.current.play()
-        .then(() => {
-          setIsPlaying(true);
-          setMuted(false);
-          audioRef.current.muted = false;
-        })
-        .catch((err) => console.log("Playback blocked:", err));
-    } else {
-      // Normal mute/unmute toggle
-      const newMutedState = !muted;
-      audioRef.current.muted = newMutedState;
-      setMuted(newMutedState);
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !muted;
+      setMuted(!muted);
     }
   };
 
@@ -83,16 +86,15 @@ const MusicToggle = ({ start }) => {
         src={Music} 
         loop 
         playsInline 
-        preload="auto" 
+        autoPlay 
       />
 
       <button
-        onClick={toggleMusic}
+        onClick={toggleMute}
         className="fixed bottom-6 right-6 z-50 bg-black/70 backdrop-blur border border-[#C8A951]
           text-[#C8A951] px-4 py-2 rounded-full text-xs tracking-widest uppercase hover:bg-[#C8A951] hover:text-black transition-all duration-300"
       >
-        {/* Agar play nahi ho raha to 'Play' dikhao, warna Mute/Unmute */}
-        {!isPlaying ? "Play Music 🎵" : (muted ? "Unmute 🔊" : "Mute 🔇")}
+        {muted ? "Unmute 🔊" : "Mute 🔇"}
       </button>
     </>
   );
