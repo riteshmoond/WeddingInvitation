@@ -44,6 +44,65 @@
 
 // MusicToggle.jsx
 // MusicToggle.jsx
+// import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+// import Music from "../assets/Music.mp3";
+
+// const MusicToggle = forwardRef(({ start }, ref) => {
+//   const audioRef = useRef(null);
+//   const [muted, setMuted] = useState(true);
+
+//   useImperativeHandle(ref, () => ({
+//     play() {
+//       if (!audioRef.current) return;
+
+//       audioRef.current.volume = 0.6;
+//       audioRef.current.muted = true; // ✅ iOS trick
+//       audioRef.current.play().then(() => {
+//         audioRef.current.muted = false;
+//         setMuted(false);
+//       });
+//     },
+//   }));
+
+//   const toggleMute = () => {
+//     if (!audioRef.current) return;
+//     audioRef.current.muted = !audioRef.current.muted;
+//     setMuted(audioRef.current.muted);
+//   };
+
+//   return (
+//     <>
+//       <audio
+//         ref={audioRef}
+//         src={Music}
+//         loop
+//         preload="auto"
+//         playsInline
+//       />
+
+//       {start && (
+//         <button
+//           onClick={toggleMute}
+//           className="fixed bottom-6 right-6 z-50 bg-black/70 backdrop-blur
+//           border border-[#C8A951] text-[#C8A951]
+//           px-4 py-2 rounded-full text-xs tracking-widest uppercase"
+//         >
+//           {muted ? "Unmute 🔊" : "Mute 🔇"}
+//         </button>
+//       )}
+//     </>
+//   );
+// });
+
+// export default MusicToggle;
+
+
+
+
+
+
+
+
 import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import Music from "../assets/Music.mp3";
 
@@ -55,19 +114,18 @@ const MusicToggle = forwardRef(({ start }, ref) => {
     play() {
       if (!audioRef.current) return;
 
-      audioRef.current.volume = 0.6;
-      audioRef.current.muted = true; // ✅ iOS trick
-      audioRef.current.play().then(() => {
-        audioRef.current.muted = false;
-        setMuted(false);
-      });
+      audioRef.current.volume = 1;   // 🔥 FULL
+      audioRef.current.muted = true; // iOS safe
+      audioRef.current.play().catch(() => {});
     },
   }));
 
   const toggleMute = () => {
     if (!audioRef.current) return;
-    audioRef.current.muted = !audioRef.current.muted;
-    setMuted(audioRef.current.muted);
+
+    const next = !audioRef.current.muted;
+    audioRef.current.muted = next;
+    setMuted(next);
   };
 
   return (
@@ -87,7 +145,7 @@ const MusicToggle = forwardRef(({ start }, ref) => {
           border border-[#C8A951] text-[#C8A951]
           px-4 py-2 rounded-full text-xs tracking-widest uppercase"
         >
-          {muted ? "Unmute 🔊" : "Mute 🔇"}
+          {muted ? "Tap for Sound 🔊" : "Mute 🔇"}
         </button>
       )}
     </>
@@ -95,3 +153,4 @@ const MusicToggle = forwardRef(({ start }, ref) => {
 });
 
 export default MusicToggle;
+
