@@ -1042,7 +1042,6 @@ const WeddingInvitation = forwardRef(({ name }, ref) => {
            <span style={{ color: '#c9a24d' }}>✿</span> विशेष आग्रह : रामकुमार, विक्रम, रणजीत, गगन <span style={{ color: '#c9a24d' }}>✿</span>
            <span style={{ color: '#c9a24d' }}>✿</span> स्वागतकर्ता :- बनवारी, सुभाष, प्रकाश, महेश<span style={{ color: '#c9a24d' }}>✿</span>
         </p>
-        
         <div style={{ marginTop: '20px' }}>
           <p style={{ fontWeight: 'bold', color: '#7a1f1f', fontSize: '16px', marginBottom: '8px' }}>निहारती पलकें</p>
           <p style={{ fontSize: '12px', color: '#666', fontStyle: 'italic', lineHeight: '1.6', maxWidth: '80%', margin: '0 auto' }}>
