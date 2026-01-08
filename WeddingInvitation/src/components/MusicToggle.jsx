@@ -103,54 +103,42 @@
 
 
 
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
-import Music from "../assets/Music.mp3";
+// MusicToggle.jsx
+import { useEffect, useRef, useState } from "react";
+import Music from '../assets/Music.mp3'
 
-const MusicToggle = forwardRef(({ start }, ref) => {
+const MusicToggle = ({ start }) => {
   const audioRef = useRef(null);
-  const [muted, setMuted] = useState(true);
+  const [muted, setMuted] = useState(false);
 
-  useImperativeHandle(ref, () => ({
-    play() {
-      if (!audioRef.current) return;
-
-      audioRef.current.volume = 1;   // 🔥 FULL
-      audioRef.current.muted = true; // iOS safe
+  // 🔥 Start music automatically after user interaction
+  useEffect(() => {
+    if (start && audioRef.current) {
+      audioRef.current.volume = 0.6;
       audioRef.current.play().catch(() => {});
-    },
-  }));
+    }
+  }, [start]);
 
   const toggleMute = () => {
     if (!audioRef.current) return;
-
-    const next = !audioRef.current.muted;
-    audioRef.current.muted = next;
-    setMuted(next);
+    audioRef.current.muted = !muted;
+    setMuted(!muted);
   };
 
   return (
     <>
-      <audio
-        ref={audioRef}
-        src={Music}
-        loop
-        preload="auto"
-        playsInline
-      />
+      <audio ref={audioRef} loop src={Music} />
 
-      {start && (
-        <button
-          onClick={toggleMute}
-          className="fixed bottom-6 right-6 z-50 bg-black/70 backdrop-blur
-          border border-[#C8A951] text-[#C8A951]
-          px-4 py-2 rounded-full text-xs tracking-widest uppercase"
-        >
-          {muted ? "Tap for Sound 🔊" : "Mute 🔇"}
-        </button>
-      )}
+      {/* Optional mute button */}
+      <button
+        onClick={toggleMute}
+        className="fixed bottom-6 right-6 z-50 bg-black/70 backdrop-blur border border-[#C8A951]
+        text-[#C8A951] px-4 py-2 rounded-full text-xs tracking-widest uppercase"
+      >
+        {muted ? "Unmute" : "Mute"}
+      </button>
     </>
   );
-});
+};
 
 export default MusicToggle;
-
