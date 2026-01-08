@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./App.css";
 
 import CinematicIntro from "./components/CinematicIntro";
@@ -24,6 +24,8 @@ function App() {
   const [name, setName] = useState("");
   const [step, setStep] = useState(1);
   const [showIntro, setShowIntro] = useState(false);
+  const musicRef = useRef(null);
+
 
   // 1️⃣ Entry
   if (step === 1) {
@@ -43,6 +45,7 @@ function App() {
       <OpenCard
         name={name}
         onOpen={() => {
+           musicRef.current?.play(); // ✅ SAME USER TAP
           setShowIntro(true);
           setMusicStart(true);
           setStep(3);
@@ -54,7 +57,7 @@ function App() {
   // 3️⃣ Main Invitation
   return (
     <>
-    <MusicToggle start={musicStart} />
+    <MusicToggle start={musicStart} ref={musicRef}/>
       {showIntro && (
         <CinematicIntro
           name={name}

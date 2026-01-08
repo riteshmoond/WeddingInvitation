@@ -44,44 +44,20 @@
 
 // MusicToggle.jsx
 // MusicToggle.jsx
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import Music from "../assets/Music.mp3";
 
-const MusicToggle = ({ start }) => {
+const MusicToggle = forwardRef((props, ref) => {
   const audioRef = useRef(null);
-  const unlockedRef = useRef(false); // 👈 gesture unlock flag
   const [muted, setMuted] = useState(false);
 
-  // 🔓 iOS gesture unlock (runs ONLY once)
-  useEffect(() => {
-    const unlockAudio = () => {
-      if (!audioRef.current || unlockedRef.current) return;
-
+  useImperativeHandle(ref, () => ({
+    play() {
+      if (!audioRef.current) return;
       audioRef.current.volume = 0.6;
-      audioRef.current
-        .play()
-        .then(() => {
-          unlockedRef.current = true;
-        })
-        .catch(() => {});
-    };
-
-    window.addEventListener("click", unlockAudio, { once: true });
-    window.addEventListener("touchstart", unlockAudio, { once: true });
-
-    return () => {
-      window.removeEventListener("click", unlockAudio);
-      window.removeEventListener("touchstart", unlockAudio);
-    };
-  }, []);
-
-  // ▶️ Start music when `start` becomes true
-  useEffect(() => {
-    if (!start || !audioRef.current) return;
-
-    audioRef.current.volume = 0.6;
-    audioRef.current.play().catch(() => {});
-  }, [start]);
+      audioRef.current.play();
+    },
+  }));
 
   const toggleMute = () => {
     if (!audioRef.current) return;
@@ -95,7 +71,7 @@ const MusicToggle = ({ start }) => {
         ref={audioRef}
         src={Music}
         loop
-        playsInline   // 👈 iOS REQUIRED
+        playsInline
       />
 
       <button
@@ -107,6 +83,6 @@ const MusicToggle = ({ start }) => {
       </button>
     </>
   );
-};
+});
 
 export default MusicToggle;
